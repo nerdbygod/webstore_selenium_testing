@@ -24,3 +24,13 @@ class ProductPage(BasePage):
             "Item title should be correctly displayed in the basket"
         assert item_price in item_in_basket_price_notif.text, \
             "Item price should be correctly displayed in the basket"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.ITEM_ADDED_MESSAGE), \
+            "Success message is presented"
+
+    def success_message_should_disappear(self):
+        assert self.is_not_element_present(*ProductPageLocators.ITEM_ADDED_MESSAGE), \
+            "Success message should disappear" \
+
+

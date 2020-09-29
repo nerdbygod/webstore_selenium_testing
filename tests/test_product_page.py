@@ -22,3 +22,41 @@ def test_guest_can_add_product_to_basket(browser, offer_link):
 
     # Assert
     product_page.verify_add_to_basket_notification(item_title, item_price)
+
+
+def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+    # Arrange
+    product_page_link = ProductPage.product_page_link
+    product_page = ProductPage(browser, product_page_link)
+    product_page.open()
+
+    # Act
+    product_page.add_to_cart()
+
+    # Assert
+    product_page.should_not_be_success_message()
+
+
+def test_guest_cant_see_success_message(browser):
+    # Arrange
+    product_page_link = ProductPage.product_page_link
+    product_page = ProductPage(browser, product_page_link)
+
+    # Act
+    product_page.open()
+
+    # Assert
+    product_page.should_not_be_success_message()
+
+
+def test_message_disappeared_after_adding_product_to_basket(browser):
+    # Arrange
+    product_page_link = ProductPage.product_page_link
+    product_page = ProductPage(browser, product_page_link)
+    product_page.open()
+
+    # Act
+    product_page.add_to_cart()
+
+    # Assert
+    product_page.success_message_should_disappear()
