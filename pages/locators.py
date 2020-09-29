@@ -20,5 +20,5 @@ class ProductPageLocators():
     PROMO_ITEM_ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, "#add_to_basket_form button")
     PROMO_ITEM_TITLE = (By.CSS_SELECTOR, ".product_main > h1")
     PROMO_ITEM_PRICE = (By.CSS_SELECTOR, ".product_main > .price_color")
-    ITEM_ADDED_MESSAGE = (By.CSS_SELECTOR, "#messages > div:nth-child(1)")
+    ITEM_ADDED_MESSAGE = (By.CSS_SELECTOR, "#messages > div:nth-child(1) strong")
     BASKET_PRICE_NOTIFICATION = By.CSS_SELECTOR, "#messages > div:last-child .alertinner strong"
