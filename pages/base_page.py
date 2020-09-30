@@ -3,10 +3,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import TimeoutException
+from .locators import LoginPageLocators, BasePageLocators
 import math
 
 
-class BasePage():
+class BasePage:
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
@@ -37,6 +38,16 @@ class BasePage():
         except TimeoutException:
             return False
         return True
+
+    def should_be_authorized_user(self):
+        welcome_text = "Спасибо за регистрацию!"
+
+        assert self.is_element_present(*BasePageLocators.USER_ICON), \
+            "User icon is not presented, probably unauthorised user"
+        assert self.is_element_present(*LoginPageLocators.LOGOUT_BUTTON), \
+            "Logout button should be presented for the authorized user"
+        assert self.is_element_present(*LoginPageLocators.WELCOME_TEXT), \
+            "Welcome text should be presented for the newly registered user"
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert

@@ -29,3 +29,10 @@ class LoginPage(BasePage):
             "Signup repeat password field should be present!"
         assert self.is_element_present(*LoginPageLocators.SIGNUP_SUBMIT_BUTTON), \
             "Signup submit button should be present!"
+
+    def register_new_user(self, email, password):
+        # Act
+        self.browser.find_element(*LoginPageLocators.SIGNUP_EMAIL).send_keys(email)
+        self.browser.find_element(*LoginPageLocators.SIGNUP_PASSWORD).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.SIGNUP_REPEAT_PASSWORD).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.SIGNUP_SUBMIT_BUTTON).click()
