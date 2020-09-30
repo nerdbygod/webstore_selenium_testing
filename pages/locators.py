@@ -1,11 +1,11 @@
 from selenium.webdriver.common.by import By
 
 
-class MainPageLocators():
+class MainPageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
 
-class LoginPageLocators():
+class LoginPageLocators:
     LOGIN_PAGE_URL = "accounts/login/"
     SIGNUP_EMAIL = (By.CSS_SELECTOR, "#id_registration-email_invalid")
     SIGNUP_PASSWORD = (By.CSS_SELECTOR, "#id_registration-password1_invalid")
@@ -16,7 +16,7 @@ class LoginPageLocators():
     LOGIN_SUBMIT_BUTTON = (By.CSS_SELECTOR, "button[name='login_submit']_invalid")
 
 
-class ProductPageLocators():
+class ProductPageLocators:
     PROMO_ITEM_ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, "#add_to_basket_form button")
     PROMO_ITEM_TITLE = (By.CSS_SELECTOR, ".product_main > h1")
     PROMO_ITEM_PRICE = (By.CSS_SELECTOR, ".product_main > .price_color")

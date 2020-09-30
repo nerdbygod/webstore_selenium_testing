@@ -5,6 +5,10 @@ from .locators import ProductPageLocators
 class ProductPage(BasePage):
     product_page_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 
+    def __init__(self, browser, offer_link):
+        product_page_offer_link = f"{ProductPage.product_page_link}{offer_link}"
+        BasePage.__init__(self, browser, product_page_offer_link)
+
     def add_to_cart(self):
         add_to_cart_button = self.browser.find_element(*ProductPageLocators.PROMO_ITEM_ADD_TO_CART_BUTTON)
         add_to_cart_button.click()
@@ -32,5 +36,3 @@ class ProductPage(BasePage):
     def success_message_should_disappear(self):
         assert self.is_not_element_present(*ProductPageLocators.ITEM_ADDED_MESSAGE), \
             "Success message should disappear" \
-
-
