@@ -40,8 +40,6 @@ class BasePage:
         return True
 
     def should_be_authorized_user(self):
-        welcome_text = "Спасибо за регистрацию!"
-
         assert self.is_element_present(*BasePageLocators.USER_ICON), \
             "User icon is not presented, probably unauthorised user"
         assert self.is_element_present(*LoginPageLocators.LOGOUT_BUTTON), \

@@ -2,7 +2,7 @@ import string
 from random import choice
 
 
-def random_string(length: str) -> str:
+def random_string(length: int) -> str:
     letters = string.ascii_lowercase
     return "".join(choice(letters) for _ in range(length))
 
