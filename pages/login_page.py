@@ -3,6 +3,9 @@ from .locators import LoginPageLocators
 
 
 class LoginPage(BasePage):
+    # Registered users credentials
+    test_user = ["wvcudow@jbm.hsz", "ullwngrzv"]
+
     def should_be_login_page(self):
         self.should_be_login_url()
         self.should_be_login_form()
@@ -31,8 +34,12 @@ class LoginPage(BasePage):
             "Signup submit button should be present!"
 
     def register_new_user(self, email, password):
-        # Act
         self.browser.find_element(*LoginPageLocators.SIGNUP_EMAIL).send_keys(email)
         self.browser.find_element(*LoginPageLocators.SIGNUP_PASSWORD).send_keys(password)
         self.browser.find_element(*LoginPageLocators.SIGNUP_REPEAT_PASSWORD).send_keys(password)
         self.browser.find_element(*LoginPageLocators.SIGNUP_SUBMIT_BUTTON).click()
+
+    def sign_in_registered_user(self):
+        self.browser.find_element(*LoginPageLocators.LOGIN_EMAIL).send_keys(self.test_user[0])
+        self.browser.find_element(*LoginPageLocators.LOGIN_PASSWORD).send_keys(self.test_user[1])
+        self.browser.find_element(*LoginPageLocators.LOGIN_SUBMIT_BUTTON).click()

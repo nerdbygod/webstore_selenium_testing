@@ -16,6 +16,10 @@ class BasePage:
     def open(self):
         self.browser.get(self.url)
 
+    @staticmethod
+    def find_in_element(parent, locator):
+        return parent.find_element(*locator)
+
     def is_element_present(self, how, what):
         try:
             self.browser.find_element(how, what)

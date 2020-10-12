@@ -3,13 +3,10 @@ from .locators import ProductPageLocators
 
 
 class ProductPage(BasePage):
-    product_page_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+    PRODUCT_PAGE_LINK = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 
-    # __init__ class constructor should be refactored here as we don't need
-    # to call for this variable for every product page
-    def __init__(self, browser, offer_link):
-        product_page_offer_link = f"{ProductPage.product_page_link}{offer_link}"
-        BasePage.__init__(self, browser, product_page_offer_link)
+    def __init__(self, browser):
+        BasePage.__init__(self, browser, ProductPage.PRODUCT_PAGE_LINK)
 
     def add_to_cart(self):
         add_to_cart_button = self.browser.find_element(*ProductPageLocators.PROMO_ITEM_ADD_TO_CART_BUTTON)
