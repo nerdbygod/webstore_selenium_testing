@@ -7,14 +7,6 @@ from tests.random_credentials import random_string, random_email
 
 
 class TestGuestAddToBasketFromProductPage:
-    def test_guest_can_add_product_to_basket(self, browser):
-        # Arrange
-        main_page = MainPage(browser, MainPage.MAIN_PAGE_LINK)
-        main_page.open()
-        main_page.go_to_catalogue_page()
-
-        # Act
-
 
     @pytest.mark.parametrize('offer_link', ["?promo=offer0", "?promo=offer1", "?promo=offer2",
                                             "?promo=offer3", "?promo=offer4", "?promo=offer5",
@@ -104,6 +96,3 @@ class TestUserAddToBasketFromProductPage:
 
         # Assert
         product_page.verify_add_to_basket_notification(item_title, item_price)
-
-    def test_user_can_see_products_added_before_sign_in(self):
-        pass
